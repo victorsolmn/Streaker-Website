@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Streaker - Transform your health journey with daily habit tracking, gamified achievements, and comprehensive wellness monitoring.">
+    <meta property="og:title" content="Streaker - Track Health, Build Habits, Win Life">
+    <meta property="og:description" content="Turn daily health tracking into an addictive game. Track steps, calories, sleep, and more with Streaker.">
+    <meta property="og:image" content="assets/social-preview.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <title>Streaker - Track Health, Build Habits, Win Life</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="streak-flame">🔥</div>
+            <div class="loader-text">Streaker</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-icon">🔥</span>
+                <span class="brand-text">Streaker</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#testimonials" class="nav-link">Reviews</a>
+                <button class="nav-cta download-btn" data-download>
+                    <i class="fas fa-download"></i>
+                    <span>Download Free</span>
+                </button>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#features" class="mobile-link">Features</a>
+        <a href="#how-it-works" class="mobile-link">How It Works</a>
+        <a href="#achievements" class="mobile-link">Achievements</a>
+        <a href="#testimonials" class="mobile-link">Reviews</a>
+        <button class="mobile-cta download-btn" data-download>Download Free</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <div class="gradient-bg"></div>
+            <div class="floating-elements">
+                <div class="float-element" data-speed="2">❤️</div>
+                <div class="float-element" data-speed="3">🏃</div>
+                <div class="float-element" data-speed="2.5">💤</div>
+                <div class="float-element" data-speed="1.5">🎯</div>
+                <div class="float-element" data-speed="2.8">⚡</div>
+                <div class="float-element" data-speed="1.8">🏆</div>
+            </div>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-icon">🚀</span>
+                    <span class="badge-text">50,000+ Active Users</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span class="title-line">Track.</span>
+                    <span class="title-line gradient-text">Streak.</span>
+                    <span class="title-line">Transform.</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Turn daily health tracking into an addictive game. Build lasting habits with Streaker's gamified wellness platform.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="1000000">0</div>
+                        <div class="stat-label">Streaks Completed</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="50000">0</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="4.8" data-decimal="1">0</div>
+                        <div class="stat-label">App Rating ⭐</div>
+                    </div>
+                </div>
+
+                <div class="hero-cta">
+                    <button class="cta-primary download-btn" data-download>
+                        <i class="fas fa-download"></i>
+                        <span>Download Free</span>
+                    </button>
+                    <button class="cta-secondary" id="watchDemo">
+                        <i class="fas fa-play-circle"></i>
+                        <span>Watch Demo</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="phone-mockup" id="phoneMockup">
+                    <div class="phone-screen">
+                        <img src="assets/app-dashboard.png" alt="Streaker App Dashboard" class="screen-img">
+                        <div class="screen-overlay"></div>
+                    </div>
+                    <div class="phone-notch"></div>
+                </div>
+
+                <div class="mockup-cards">
+                    <div class="feature-card" data-tilt>
+                        <div class="card-icon">👟</div>
+                        <div class="card-text">8,547 Steps</div>
+                    </div>
+                    <div class="feature-card" data-tilt>
+                        <div class="card-icon">🔥</div>
+                        <div class="card-text">7 Day Streak</div>
+                    </div>
+                    <div class="feature-card" data-tilt>
+                        <div class="card-icon">🏆</div>
+                        <div class="card-text">5 Badges Earned</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Bar -->
+    <section class="social-proof">
+        <div class="proof-container">
+            <div class="proof-track">
+                <div class="proof-item">
+                    <i class="fas fa-users"></i>
+                    <span>Join 50,000+ Health Enthusiasts</span>
+                </div>
+                <div class="proof-item">
+                    <i class="fas fa-star"></i>
+                    <span>4.8 Rating on Play Store</span>
+                </div>
+                <div class="proof-item">
+                    <i class="fas fa-fire"></i>
+                    <span>1M+ Streaks Completed</span>
+                </div>
+                <div class="proof-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>500K+ Achievements Unlocked</span>
+                </div>
+                <!-- Duplicate for seamless loop -->
+                <div class="proof-item">
+                    <i class="fas fa-users"></i>
+                    <span>Join 50,000+ Health Enthusiasts</span>
+                </div>
+                <div class="proof-item">
+                    <i class="fas fa-star"></i>
+                    <span>4.8 Rating on Play Store</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Features</span>
+                <h2 class="section-title">Everything You Need for <span class="gradient-text">Better Health</span></h2>
+                <p class="section-subtitle">Comprehensive health tracking with a touch of gamification</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-box" data-aos="fade-up">
+                    <div class="feature-icon-3d">
+                        <div class="icon-inner">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                    </div>
+                    <h3>Smart Health Sync</h3>
+                    <p>Seamlessly connects with Samsung Health and Google Fit for automatic tracking</p>
+                    <div class="feature-badges">
+                        <span class="tech-badge">Samsung Health</span>
+                        <span class="tech-badge">Google Fit</span>
+                    </div>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon-3d">
+                        <div class="icon-inner">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                    </div>
+                    <h3>Nutrition Tracking</h3>
+                    <p>Extensive Indian food database with detailed macro tracking</p>
+                    <div class="feature-badges">
+                        <span class="tech-badge">5000+ Foods</span>
+                        <span class="tech-badge">Indian Cuisine</span>
+                    </div>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon-3d">
+                        <div class="icon-inner">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                    </div>
+                    <h3>Achievement System</h3>
+                    <p>Unlock badges and rewards as you progress on your health journey</p>
+                    <div class="feature-badges">
+                        <span class="tech-badge">15+ Badges</span>
+                        <span class="tech-badge">Rewards</span>
+                    </div>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon-3d">
+                        <div class="icon-inner">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                    </div>
+                    <h3>Streak Tracking</h3>
+                    <p>Build consistency with intelligent streak tracking and recovery</p>
+                    <div class="feature-badges">
+                        <span class="tech-badge">Daily Goals</span>
+                        <span class="tech-badge">Motivation</span>
+                    </div>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon-3d">
+                        <div class="icon-inner">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <h3>Smart Dashboard</h3>
+                    <p>Beautiful visualizations of your health metrics at a glance</p>
+                    <div class="feature-badges">
+                        <span class="tech-badge">Real-time</span>
+                        <span class="tech-badge">Insights</span>
+                    </div>
+                </div>
+
+                <div class="feature-box" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon-3d">
+                        <div class="icon-inner">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>Your health data is encrypted and secure with industry-leading protection</p>
+                    <div class="feature-badges">
+                        <span class="tech-badge">Encrypted</span>
+                        <span class="tech-badge">Secure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">How It Works</span>
+                <h2 class="section-title">Start Your Journey in <span class="gradient-text">3 Simple Steps</span></h2>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card" data-step="1">
+                    <div class="step-number">01</div>
+                    <div class="step-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Connect Your Apps</h3>
+                    <p>Link Samsung Health or Google Fit for automatic health data syncing</p>
+                    <div class="step-visual">
+                        <div class="sync-animation">
+                            <div class="sync-icon samsung">S</div>
+                            <div class="sync-line"></div>
+                            <div class="sync-icon streaker">🔥</div>
+                            <div class="sync-line"></div>
+                            <div class="sync-icon google">G</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card" data-step="2">
+                    <div class="step-number">02</div>
+                    <div class="step-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Track Daily Activities</h3>
+                    <p>Monitor steps, calories, sleep, and nutrition with beautiful visualizations</p>
+                    <div class="step-visual">
+                        <div class="progress-rings">
+                            <div class="ring-container">
+                                <svg class="progress-ring" data-progress="75">
+                                    <circle class="progress-ring-bg"></circle>
+                                    <circle class="progress-ring-fill"></circle>
+                                </svg>
+                                <span class="ring-label">Steps</span>
+                            </div>
+                            <div class="ring-container">
+                                <svg class="progress-ring" data-progress="60">
+                                    <circle class="progress-ring-bg"></circle>
+                                    <circle class="progress-ring-fill"></circle>
+                                </svg>
+                                <span class="ring-label">Calories</span>
+                            </div>
+                            <div class="ring-container">
+                                <svg class="progress-ring" data-progress="90">
+                                    <circle class="progress-ring-bg"></circle>
+                                    <circle class="progress-ring-fill"></circle>
+                                </svg>
+                                <span class="ring-label">Sleep</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card" data-step="3">
+                    <div class="step-number">03</div>
+                    <div class="step-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Earn Achievements</h3>
+                    <p>Build streaks, unlock badges, and celebrate your health milestones</p>
+                    <div class="step-visual">
+                        <div class="badges-preview">
+                            <div class="badge-item gold">🏆</div>
+                            <div class="badge-item silver">🥈</div>
+                            <div class="badge-item bronze">🥉</div>
+                            <div class="badge-item special">⭐</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Showcase -->
+    <section class="achievements" id="achievements">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Gamification</span>
+                <h2 class="section-title">Level Up Your <span class="gradient-text">Health Game</span></h2>
+                <p class="section-subtitle">Unlock achievements and build your health legacy</p>
+            </div>
+
+            <div class="achievement-wall">
+                <div class="achievement-card unlocked" data-tilt>
+                    <div class="achievement-icon">👣</div>
+                    <h4>First Steps</h4>
+                    <p>Complete your first day</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar complete"></div>
+                    </div>
+                </div>
+
+                <div class="achievement-card unlocked" data-tilt>
+                    <div class="achievement-icon">🔥</div>
+                    <h4>Week Warrior</h4>
+                    <p>7-day streak achieved</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar complete"></div>
+                    </div>
+                </div>
+
+                <div class="achievement-card in-progress" data-tilt>
+                    <div class="achievement-icon">💪</div>
+                    <h4>Step Master</h4>
+                    <p>10,000 steps in a day</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                </div>
+
+                <div class="achievement-card locked" data-tilt>
+                    <div class="achievement-icon">🎯</div>
+                    <h4>Century Striker</h4>
+                    <p>100-day streak</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="achievement-card locked" data-tilt>
+                    <div class="achievement-icon">⚡</div>
+                    <h4>Calorie Champion</h4>
+                    <p>Burn 3000 calories</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+
+                <div class="achievement-card locked" data-tilt>
+                    <div class="achievement-icon">🌟</div>
+                    <h4>Wellness Warrior</h4>
+                    <p>Complete all daily goals</p>
+                    <div class="achievement-progress">
+                        <div class="progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="achievement-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-info">
+                        <div class="stat-value">15+</div>
+                        <div class="stat-desc">Achievements to Unlock</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎮</div>
+                    <div class="stat-info">
+                        <div class="stat-value">XP</div>
+                        <div class="stat-desc">Experience Points System</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📈</div>
+                    <div class="stat-info">
+                        <div class="stat-value">Levels</div>
+                        <div class="stat-desc">Progress Through Ranks</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots -->
+    <section class="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">App Preview</span>
+                <h2 class="section-title">See Streaker in <span class="gradient-text">Action</span></h2>
+            </div>
+
+            <div class="screenshots-carousel">
+                <div class="carousel-container">
+                    <div class="screenshot-item active">
+                        <div class="phone-frame">
+                            <img src="assets/screen-dashboard.png" alt="Dashboard" class="screenshot-img">
+                        </div>
+                        <h4>Smart Dashboard</h4>
+                        <p>All your health metrics at a glance</p>
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="phone-frame">
+                            <img src="assets/screen-nutrition.png" alt="Nutrition" class="screenshot-img">
+                        </div>
+                        <h4>Nutrition Tracking</h4>
+                        <p>Log meals with Indian food database</p>
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="phone-frame">
+                            <img src="assets/screen-progress.png" alt="Progress" class="screenshot-img">
+                        </div>
+                        <h4>Progress & Streaks</h4>
+                        <p>Track your consistency and growth</p>
+                    </div>
+
+                    <div class="screenshot-item">
+                        <div class="phone-frame">
+                            <img src="assets/screen-profile.png" alt="Profile" class="screenshot-img">
+                        </div>
+                        <h4>Profile & Settings</h4>
+                        <p>Customize your experience</p>
+                    </div>
+                </div>
+
+                <div class="carousel-nav">
+                    <button class="carousel-btn prev" id="prevBtn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next" id="nextBtn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="carousel-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Success Stories</span>
+                <h2 class="section-title">What Our <span class="gradient-text">Users Say</span></h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card" data-aos="fade-up">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">
+                            <img src="assets/user1.jpg" alt="Rahul">
+                        </div>
+                        <div class="user-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="user-stats">
+                                <span class="streak-badge">🔥 45 Day Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Streaker has completely transformed my fitness routine! The gamification keeps me motivated, and I love tracking my Indian meals accurately."
+                    </p>
+                    <div class="testimonial-badges">
+                        <span class="badge-earned">🏆 10 Badges</span>
+                        <span class="badge-earned">📈 15kg Lost</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">
+                            <img src="assets/user2.jpg" alt="Priya">
+                        </div>
+                        <div class="user-info">
+                            <h4>Priya Patel</h4>
+                            <div class="user-stats">
+                                <span class="streak-badge">🔥 90 Day Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "The best health app I've used! Syncs perfectly with my Samsung Galaxy Watch and the achievement system keeps me coming back every day."
+                    </p>
+                    <div class="testimonial-badges">
+                        <span class="badge-earned">🏆 15 Badges</span>
+                        <span class="badge-earned">💪 Fitness Pro</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-header">
+                        <div class="user-avatar">
+                            <img src="assets/user3.jpg" alt="Amit">
+                        </div>
+                        <div class="user-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="user-stats">
+                                <span class="streak-badge">🔥 30 Day Streak</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Finally, an app that understands Indian food! The nutrition database is amazing and the streak feature has made me more consistent than ever."
+                    </p>
+                    <div class="testimonial-badges">
+                        <span class="badge-earned">🏆 8 Badges</span>
+                        <span class="badge-earned">🎯 Goal Crusher</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Why Streaker?</span>
+                <h2 class="section-title">Everything You Need, <span class="gradient-text">Nothing You Don't</span></h2>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3>Completely Free</h3>
+                    <p>No subscriptions, no hidden fees. All features available at no cost.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-globe-asia"></i>
+                    </div>
+                    <h3>Made for India</h3>
+                    <p>Extensive Indian food database with regional cuisines and local dishes.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>Your data is encrypted and secure. We never share your information.</p>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fas fa-wifi-slash"></i>
+                    </div>
+                    <h3>Works Offline</h3>
+                    <p>Track your health even without internet. Syncs when you're back online.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>Ready to Start Your <span class="gradient-text">Health Journey?</span></h2>
+                    <p>Join 50,000+ users who are building healthier habits with Streaker</p>
+                </div>
+
+                <div class="cta-visual">
+                    <div class="streak-counter">
+                        <div class="counter-flame">🔥</div>
+                        <div class="counter-number" id="liveCounter">50,432</div>
+                        <div class="counter-label">Active Streaks Right Now</div>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="download-btn-large download-btn" data-download>
+                        <i class="fas fa-download"></i>
+                        <span>Download Streaker Free</span>
+                    </button>
+                    <div class="store-badges">
+                        <img src="assets/play-store.png" alt="Get it on Google Play" class="store-badge">
+                        <img src="assets/app-store.png" alt="Download on App Store" class="store-badge">
+                    </div>
+                </div>
+
+                <div class="qr-section">
+                    <div class="qr-code">
+                        <img src="assets/qr-code.png" alt="Scan to download">
+                    </div>
+                    <p class="qr-text">Scan to download on mobile</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <span class="brand-icon">🔥</span>
+                        <span class="brand-text">Streaker</span>
+                    </div>
+                    <p>Your daily health companion</p>
+                </div>
+
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Product</h4>
+                        <a href="#features">Features</a>
+                        <a href="#how-it-works">How It Works</a>
+                        <a href="#achievements">Achievements</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Support</h4>
+                        <a href="mailto:support@streaker.app">Contact</a>
+                        <a href="/faq">FAQ</a>
+                        <a href="/help">Help Center</a>
+                    </div>
+
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <a href="https://victorsolmn.github.io/streaker-privacy/">Privacy Policy</a>
+                        <a href="/terms">Terms of Service</a>
+                        <a href="https://victorsolmn.github.io/streaker-privacy/#account-deletion">Delete Account</a>
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Streaker. All rights reserved.</p>
+                <p>Made with ❤️ for healthier India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <video id="demoVideo" controls>
+                <source src="assets/demo-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- Download Redirect Script -->
+    <script>
+        // Device detection and smart download
+        function getDeviceType() {
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/android/i.test(userAgent)) {
+                return 'android';
+            }
+
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return 'ios';
+            }
+
+            return 'desktop';
+        }
+
+        function handleDownload() {
+            const device = getDeviceType();
+
+            switch(device) {
+                case 'android':
+                    window.location.href = 'https://play.google.com/store/apps/details?id=com.streaker.app';
+                    break;
+                case 'ios':
+                    window.location.href = 'https://apps.apple.com/app/streaker/id123456789';
+                    break;
+                default:
+                    // Show QR code for desktop users
+                    document.querySelector('.qr-section').scrollIntoView({ behavior: 'smooth' });
+                    break;
+            }
+        }
+
+        // Attach to all download buttons
+        document.querySelectorAll('[data-download]').forEach(btn => {
+            btn.addEventListener('click', handleDownload);
+        });
+    </script>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
