@@ -233,20 +233,8 @@ function initLiveCounter() {
     const counter = document.getElementById('liveCounter');
     if (!counter) return;
 
-    let count = 50432;
-
-    // Simulate live updates
-    setInterval(() => {
-        const change = Math.floor(Math.random() * 10) - 3; // Random change between -3 and +6
-        count = Math.max(50000, count + change); // Keep minimum at 50000
-        counter.textContent = count.toLocaleString();
-
-        // Add pulse animation
-        counter.style.transform = 'scale(1.1)';
-        setTimeout(() => {
-            counter.style.transform = 'scale(1)';
-        }, 200);
-    }, 3000);
+    // Keep the "Coming Soon" text static - no animation needed for launch page
+    counter.textContent = 'Coming Soon';
 }
 
 // Scroll Animations using GSAP
@@ -292,17 +280,17 @@ function initScrollAnimations() {
         stagger: 0.1
     });
 
-    // Steps animation
-    gsap.from('.step-card', {
-        scrollTrigger: {
-            trigger: '.how-it-works',
-            start: 'top 80%',
-        },
-        opacity: 0,
-        scale: 0.9,
-        duration: 1,
-        stagger: 0.2
-    });
+    // Steps animation - DISABLED to fix visibility issues
+    // gsap.from('.step-card', {
+    //     scrollTrigger: {
+    //         trigger: '.how-it-works',
+    //         start: 'top 80%',
+    //     },
+    //     opacity: 0,
+    //     scale: 0.9,
+    //     duration: 1,
+    //     stagger: 0.2
+    // });
 
     // Achievement cards animation
     gsap.from('.achievement-card', {
@@ -510,25 +498,8 @@ function initDownloadButtons() {
             // Get device type
             const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-            if (/android/i.test(userAgent)) {
-                // Android device - redirect to Play Store
-                window.location.href = 'https://play.google.com/store/apps/details?id=com.streaker.streaker';
-            } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                // iOS device - redirect to App Store
-                window.location.href = 'https://apps.apple.com/app/streaker/id123456789';
-            } else {
-                // Desktop - scroll to QR code
-                const qrSection = document.querySelector('.qr-section');
-                if (qrSection) {
-                    qrSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                    // Add highlight effect
-                    qrSection.style.animation = 'pulse 1s ease-in-out 3';
-                    setTimeout(() => {
-                        qrSection.style.animation = '';
-                    }, 3000);
-                }
-            }
+            // Show "Coming Soon" alert for all devices
+            alert('🚀 Streaker is launching soon on Google Play Store!\n\n📱 Android: Coming Soon\n🍎 iOS: Coming Soon\n\nStay tuned for updates!');
         });
     });
 }
