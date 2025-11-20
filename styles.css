@@ -143,6 +143,12 @@ body {
     font-size: 28px;
 }
 
+.brand-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
