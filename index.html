@@ -142,10 +142,10 @@
                 <a href="#how-it-works" class="nav-link">How It Works</a>
                 <a href="#achievements" class="nav-link">Achievements</a>
                 <a href="#testimonials" class="nav-link">Reviews</a>
-                <button class="nav-cta download-btn" data-download>
-                    <i class="fas fa-download"></i>
-                    <span>Download Free</span>
-                </button>
+                <a href="#waitlist" class="nav-cta">
+                    <span>Join Waitlist</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
             <button class="nav-toggle" id="navToggle">
                 <span></span>
@@ -161,11 +161,12 @@
         <a href="#how-it-works" class="mobile-link">How It Works</a>
         <a href="#achievements" class="mobile-link">Achievements</a>
         <a href="#testimonials" class="mobile-link">Reviews</a>
-        <button class="mobile-cta download-btn" data-download>Download Free</button>
+        <a href="#waitlist" class="mobile-cta mobile-link">Join Waitlist</a>
     </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
+        <a id="waitlist" class="scroll-anchor"></a>
         <div class="hero-bg">
             <div class="gradient-bg"></div>
             <div class="floating-elements">
@@ -210,12 +211,32 @@
                     </div>
                 </div>
 
-                <div class="hero-cta">
-                    <button class="cta-primary download-btn" data-download>
-                        <i class="fas fa-download"></i>
-                        <span>Download Free</span>
-                    </button>
-                    <!-- Watch Demo button removed - no demo video available -->
+                <!-- Waitlist CTA -->
+                <div class="waitlist-section">
+                    <div class="waitlist-counter">
+                        <span class="counter-icon">🔥</span>
+                        <span class="counter-text">
+                            <span class="counter-number" id="waitlistCounter">2,847</span> people already joined!
+                        </span>
+                    </div>
+
+                    <form class="waitlist-form" id="waitlistForm">
+                        <div class="form-group">
+                            <input
+                                type="email"
+                                class="waitlist-input"
+                                id="waitlistEmail"
+                                placeholder="Enter your email"
+                                required
+                                aria-label="Email address for waitlist"
+                            >
+                            <button type="submit" class="waitlist-submit">
+                                <span class="submit-text">Join Waitlist</span>
+                                <i class="fas fa-arrow-right submit-icon"></i>
+                            </button>
+                        </div>
+                        <p class="waitlist-note">Get early access when we launch on Play Store</p>
+                    </form>
                 </div>
             </div>
 
@@ -818,6 +839,66 @@
             if (e.key === 'Escape' && downloadModal.classList.contains('active')) {
                 closeDownloadModal();
             }
+        });
+    </script>
+
+    <!-- Waitlist Form Handler -->
+    <script>
+        // Waitlist counter animation
+        const waitlistCounter = document.getElementById('waitlistCounter');
+        let currentCount = 2847;
+
+        // Animate counter increment every 5-10 seconds
+        setInterval(() => {
+            const increment = Math.floor(Math.random() * 3) + 1; // 1-3 random increment
+            currentCount += increment;
+            waitlistCounter.textContent = currentCount.toLocaleString();
+        }, Math.random() * 5000 + 5000); // Random interval between 5-10 seconds
+
+        // Waitlist form submission
+        const waitlistForm = document.getElementById('waitlistForm');
+        const waitlistEmail = document.getElementById('waitlistEmail');
+
+        waitlistForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const email = waitlistEmail.value;
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+
+            // Store in localStorage for now (you can replace with API call later)
+            let waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
+            waitlist.push({
+                email: email,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('waitlist', JSON.stringify(waitlist));
+
+            // Show success message
+            const submitBtn = waitlistForm.querySelector('.waitlist-submit');
+            const originalHTML = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> <span>You\'re on the list!</span>';
+            submitBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+            submitBtn.disabled = true;
+
+            // Reset form
+            waitlistEmail.value = '';
+
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.innerHTML = originalHTML;
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 3000);
+
+            // Increment counter
+            currentCount++;
+            waitlistCounter.textContent = currentCount.toLocaleString();
         });
     </script>
 
