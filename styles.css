@@ -504,18 +504,18 @@ body {
     animation: pulse 2s ease-in-out infinite;
 }
 
-.counter-icon {
+.waitlist-counter .counter-icon {
     font-size: 1.25rem;
     animation: flicker 1.5s ease-in-out infinite;
 }
 
-.counter-text {
+.waitlist-counter .counter-text {
     font-size: 0.9rem;
     color: var(--dark);
     font-weight: 500;
 }
 
-.counter-number {
+.waitlist-counter .counter-number {
     font-weight: 700;
     color: var(--primary);
     font-size: 1rem;
@@ -2045,7 +2045,7 @@ button,
         padding: 1rem;
     }
 
-    .counter-text {
+    .waitlist-counter .counter-text {
         font-size: 0.85rem;
     }
 
