@@ -132,11 +132,6 @@ body {
 .nav-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 24px;
-    font-weight: 800;
-    color: var(--dark);
-    text-decoration: none;
 }
 
 .brand-icon {
