@@ -601,6 +601,67 @@ body {
     color: var(--gray);
 }
 
+/* Error State Styles */
+.error-message {
+    display: none;
+    color: #EF4444;
+    font-size: 0.875rem;
+    margin-top: 0.75rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    font-weight: 500;
+    animation: slideDown 0.3s ease;
+    background: rgba(239, 68, 68, 0.1);
+    border-radius: 8px;
+    border-left: 3px solid #EF4444;
+}
+
+.form-group.error {
+    border-color: #EF4444 !important;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1) !important;
+    animation: shake 0.4s ease;
+}
+
+.waitlist-input[aria-invalid="true"] {
+    color: #EF4444;
+}
+
+.waitlist-input[aria-invalid="true"]::placeholder {
+    color: rgba(239, 68, 68, 0.5);
+}
+
+/* Loading State */
+.waitlist-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.waitlist-submit .fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 @keyframes flicker {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.7; }

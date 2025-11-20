@@ -213,15 +213,15 @@
 
                 <!-- Waitlist CTA -->
                 <div class="waitlist-section">
-                    <div class="waitlist-counter">
-                        <span class="counter-icon">🔥</span>
+                    <div class="waitlist-counter" role="status" aria-live="polite" aria-atomic="true">
+                        <span class="counter-icon" aria-hidden="true">🔥</span>
                         <span class="counter-text">
                             <span class="counter-number" id="waitlistCounter">2,847</span> people already joined!
                         </span>
                     </div>
 
-                    <form class="waitlist-form" id="waitlistForm">
-                        <div class="form-group">
+                    <form class="waitlist-form" id="waitlistForm" novalidate>
+                        <div class="form-group" id="formGroup">
                             <input
                                 type="email"
                                 class="waitlist-input"
@@ -229,13 +229,16 @@
                                 placeholder="Enter your email"
                                 required
                                 aria-label="Email address for waitlist"
+                                aria-describedby="emailError emailNote"
+                                aria-invalid="false"
                             >
-                            <button type="submit" class="waitlist-submit">
+                            <button type="submit" class="waitlist-submit" id="waitlistSubmit">
                                 <span class="submit-text">Join Waitlist</span>
                                 <i class="fas fa-arrow-right submit-icon"></i>
                             </button>
                         </div>
-                        <p class="waitlist-note">Get early access when we launch on Play Store</p>
+                        <p class="error-message" id="emailError" role="alert" aria-live="polite"></p>
+                        <p class="waitlist-note" id="emailNote">Get early access when we launch on Play Store</p>
                     </form>
                 </div>
             </div>
@@ -858,47 +861,95 @@
         // Waitlist form submission
         const waitlistForm = document.getElementById('waitlistForm');
         const waitlistEmail = document.getElementById('waitlistEmail');
+        const errorMessage = document.getElementById('emailError');
+        const formGroup = document.getElementById('formGroup');
+        const submitBtn = waitlistForm.querySelector('.waitlist-submit');
+
+        // Clear error on input
+        waitlistEmail.addEventListener('input', function() {
+            errorMessage.textContent = '';
+            errorMessage.style.display = 'none';
+            waitlistEmail.setAttribute('aria-invalid', 'false');
+            formGroup.classList.remove('error');
+        });
 
         waitlistForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const email = waitlistEmail.value;
+            const email = waitlistEmail.value.trim();
+
+            // Clear previous errors
+            errorMessage.textContent = '';
+            errorMessage.style.display = 'none';
+            waitlistEmail.setAttribute('aria-invalid', 'false');
+            formGroup.classList.remove('error');
+
+            // Validate email is not empty
+            if (!email) {
+                errorMessage.textContent = 'Please enter your email address';
+                errorMessage.style.display = 'block';
+                waitlistEmail.setAttribute('aria-invalid', 'true');
+                formGroup.classList.add('error');
+                waitlistEmail.focus();
+                return;
+            }
 
             // Basic email validation
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(email)) {
-                alert('Please enter a valid email address');
+                errorMessage.textContent = 'Please enter a valid email address';
+                errorMessage.style.display = 'block';
+                waitlistEmail.setAttribute('aria-invalid', 'true');
+                formGroup.classList.add('error');
+                waitlistEmail.focus();
                 return;
             }
 
-            // Store in localStorage for now (you can replace with API call later)
-            let waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
-            waitlist.push({
-                email: email,
-                timestamp: new Date().toISOString()
-            });
-            localStorage.setItem('waitlist', JSON.stringify(waitlist));
-
-            // Show success message
-            const submitBtn = waitlistForm.querySelector('.waitlist-submit');
+            // Show loading state
             const originalHTML = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-check"></i> <span>You\'re on the list!</span>';
-            submitBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Joining...</span>';
             submitBtn.disabled = true;
 
-            // Reset form
-            waitlistEmail.value = '';
-
-            // Reset button after 3 seconds
+            // Simulate API call delay (replace with actual API call later)
             setTimeout(() => {
-                submitBtn.innerHTML = originalHTML;
-                submitBtn.style.background = '';
-                submitBtn.disabled = false;
-            }, 3000);
+                // Store in localStorage for now (you can replace with API call later)
+                let waitlist = JSON.parse(localStorage.getItem('waitlist') || '[]');
 
-            // Increment counter
-            currentCount++;
-            waitlistCounter.textContent = currentCount.toLocaleString();
+                // Check if email already exists
+                if (waitlist.some(entry => entry.email === email)) {
+                    errorMessage.textContent = 'This email is already on the waitlist!';
+                    errorMessage.style.display = 'block';
+                    waitlistEmail.setAttribute('aria-invalid', 'true');
+                    formGroup.classList.add('error');
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.disabled = false;
+                    return;
+                }
+
+                waitlist.push({
+                    email: email,
+                    timestamp: new Date().toISOString()
+                });
+                localStorage.setItem('waitlist', JSON.stringify(waitlist));
+
+                // Show success message
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> <span>You\'re on the list!</span>';
+                submitBtn.style.background = 'linear-gradient(135deg, #10B981, #059669)';
+
+                // Reset form
+                waitlistEmail.value = '';
+
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalHTML;
+                    submitBtn.style.background = '';
+                    submitBtn.disabled = false;
+                }, 3000);
+
+                // Increment counter
+                currentCount++;
+                waitlistCounter.textContent = currentCount.toLocaleString();
+            }, 800); // Simulate network delay
         });
     </script>
 
