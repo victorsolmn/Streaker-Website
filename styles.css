@@ -576,11 +576,6 @@ body {
     box-shadow: 0 10px 20px rgba(255, 107, 26, 0.3);
 }
 
-.waitlist-submit:disabled {
-    cursor: not-allowed;
-    opacity: 0.9;
-}
-
 .submit-text {
     font-size: 16px;
 }
@@ -833,7 +828,7 @@ body {
 
 /* Features Section */
 .features {
-    padding: 5rem 0;
+    padding: 4rem 0;
     background: linear-gradient(180deg, white 0%, #F9FAFB 100%);
 }
 
@@ -875,7 +870,7 @@ body {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
     margin-bottom: 1rem;
-    color: #1F2937 !important;  /* Force dark color for visibility */
+    color: #1F2937;
 }
 
 .section-subtitle {
@@ -988,33 +983,36 @@ body {
 
 /* How It Works */
 .how-it-works {
-    padding: 5rem 0;
+    padding: 4rem 0;
     background: linear-gradient(180deg, #F9FAFB 0%, white 100%);
 }
 
 .steps-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 3rem;
-    margin-top: 3rem;
+    gap: 2rem;
+    margin-top: 2.5rem;
 }
 
 .step-card {
     text-align: center;
     position: relative;
-    padding: 2.5rem 2rem;
-    background: white !important;
+    padding: 2rem 1.5rem;
+    background: white;
     border: 2px solid rgba(255, 107, 26, 0.15);
     border-radius: 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
-    opacity: 1 !important;
-    visibility: visible !important;
 }
 
-.step-card * {
-    opacity: 1 !important;
-    visibility: visible !important;
+.how-it-works .step-card {
+    opacity: 1;
+    visibility: visible;
+}
+
+.how-it-works .step-card * {
+    opacity: 1;
+    visibility: visible;
 }
 
 .step-card:hover {
@@ -1045,7 +1043,7 @@ body {
     color: rgba(255, 107, 26, 0.15);
 }
 
-.step-icon {
+.how-it-works .step-icon {
     width: 80px;
     height: 80px;
     margin: 2rem auto 1rem;
@@ -1054,21 +1052,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white !important;
+    color: white;
     font-size: 32px;
     position: relative;
     z-index: 1;
 }
 
-.step-card h3 {
+.how-it-works .step-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #1F2937 !important;
+    color: #1F2937;
     font-weight: 700;
 }
 
-.step-card p {
-    color: #6B7280 !important;
+.how-it-works .step-card p {
+    color: #6B7280;
     margin-bottom: 2rem;
 }
 
@@ -1198,7 +1196,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.75rem;
-    color: #6B7280 !important;
+    color: #6B7280;
     font-weight: 500;
 }
 
@@ -1362,7 +1360,7 @@ body {
 
 /* Screenshots Section */
 .screenshots {
-    padding: 5rem 0;
+    padding: 4rem 0;
     background: white;
 }
 
@@ -1480,7 +1478,7 @@ body {
 
 /* Testimonials */
 .testimonials {
-    padding: 5rem 0;
+    padding: 4rem 0;
     background: linear-gradient(180deg, white 0%, #F9FAFB 100%);
 }
 
@@ -1583,7 +1581,7 @@ body {
 
 /* Benefits Section */
 .benefits {
-    padding: 5rem 0;
+    padding: 4rem 0;
     background: white;
 }
 
@@ -1622,7 +1620,7 @@ body {
 
 /* Final CTA */
 .final-cta {
-    padding: 5rem 0;
+    padding: 4rem 0;
     background: linear-gradient(135deg, #FF6B1A 0%, #FF8C42 100%);
     color: white;
     text-align: center;
