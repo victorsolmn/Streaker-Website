@@ -122,10 +122,7 @@
                         <i class="fas fa-download"></i>
                         <span>Download Free</span>
                     </button>
-                    <button class="cta-secondary" id="watchDemo">
-                        <i class="fas fa-play-circle"></i>
-                        <span>Watch Demo</span>
-                    </button>
+                    <!-- Watch Demo button removed - no demo video available -->
                 </div>
             </div>
 
@@ -441,7 +438,8 @@
                 <div class="testimonial-card" data-aos="fade-up">
                     <div class="testimonial-header">
                         <div class="user-avatar">
-                            <img src="assets/user1.jpg" alt="Rahul">
+                            <img src="assets/user1.jpg" alt="Rahul" onerror="this.style.display='none'">
+                            <span>RS</span>
                         </div>
                         <div class="user-info">
                             <h4>Rahul Sharma</h4>
@@ -469,7 +467,8 @@
                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="testimonial-header">
                         <div class="user-avatar">
-                            <img src="assets/user2.jpg" alt="Priya">
+                            <img src="assets/user2.jpg" alt="Priya" onerror="this.style.display='none'">
+                            <span>PP</span>
                         </div>
                         <div class="user-info">
                             <h4>Priya Patel</h4>
@@ -497,7 +496,8 @@
                 <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="testimonial-header">
                         <div class="user-avatar">
-                            <img src="assets/user3.jpg" alt="Amit">
+                            <img src="assets/user3.jpg" alt="Amit" onerror="this.style.display='none'">
+                            <span>AK</span>
                         </div>
                         <div class="user-info">
                             <h4>Amit Kumar</h4>
@@ -657,7 +657,7 @@
     <!-- Video Modal -->
     <div class="modal" id="videoModal">
         <div class="modal-content">
-            <span class="modal-close">&times;</span>
+            <button class="modal-close" aria-label="Close modal">&times;</button>
             <video id="demoVideo" controls>
                 <source src="assets/demo-video.mp4" type="video/mp4">
                 Your browser does not support the video tag.
@@ -665,16 +665,68 @@
         </div>
     </div>
 
-    <!-- Download Redirect Script -->
+    <!-- Download Modal (Accessible replacement for alert()) -->
+    <div class="modal" id="downloadModal" role="dialog" aria-labelledby="downloadModalTitle" aria-modal="true">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close notification">&times;</button>
+            <div class="download-modal-icon">🚀</div>
+            <h2 id="downloadModalTitle" class="download-modal-title">Launching Soon!</h2>
+            <p class="download-modal-text">Streaker is coming soon to app stores near you. Get ready for AI-powered health tracking!</p>
+            <div class="download-modal-platforms">
+                <div class="platform-item">
+                    <strong>📱 Android:</strong>
+                    <span>Coming Soon on Google Play</span>
+                </div>
+                <div class="platform-item">
+                    <strong>🍎 iOS:</strong>
+                    <span>Coming Soon</span>
+                </div>
+            </div>
+            <p class="download-modal-text" style="font-size: 0.875rem; margin-bottom: 0;">Stay tuned for updates!</p>
+        </div>
+    </div>
+
+    <!-- Download Redirect Script (Accessible Modal Implementation) -->
     <script>
-        // Coming Soon handler - show alert for all devices
-        function handleDownload() {
-            alert('🚀 Streaker is launching soon on Google Play Store!\n\n📱 Android: Coming Soon\n🍎 iOS: Coming Soon\n\nStay tuned for updates!');
+        // Get modal elements
+        const downloadModal = document.getElementById('downloadModal');
+        const downloadModalClose = downloadModal.querySelector('.modal-close');
+
+        // Coming Soon handler - show accessible modal instead of alert
+        function handleDownload(e) {
+            e.preventDefault();
+            downloadModal.classList.add('active');
+            downloadModal.setAttribute('aria-hidden', 'false');
+            // Trap focus in modal
+            downloadModalClose.focus();
+        }
+
+        // Close modal function
+        function closeDownloadModal() {
+            downloadModal.classList.remove('active');
+            downloadModal.setAttribute('aria-hidden', 'true');
         }
 
         // Attach to all download buttons
         document.querySelectorAll('[data-download]').forEach(btn => {
             btn.addEventListener('click', handleDownload);
+        });
+
+        // Close modal on button click
+        downloadModalClose.addEventListener('click', closeDownloadModal);
+
+        // Close modal on background click
+        downloadModal.addEventListener('click', function(e) {
+            if (e.target === downloadModal) {
+                closeDownloadModal();
+            }
+        });
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && downloadModal.classList.contains('active')) {
+                closeDownloadModal();
+            }
         });
     </script>
 
