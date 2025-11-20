@@ -12,10 +12,12 @@
 
     <title>Streaker - AI-Powered Health Tracking Made Effortless</title>
 
-    <!-- Fonts -->
+    <!-- Fonts - Performance Optimized -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Async load non-critical fonts to improve page load speed -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"></noscript>
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,6 +38,9 @@
                 <div class="loader-progress"></div>
             </div>
         </div>
+        <button class="loader-skip" id="skipLoader" aria-label="Skip loading animation">
+            Click to skip →
+        </button>
     </div>
 
     <!-- Navigation -->
@@ -129,7 +134,7 @@
             <div class="hero-visual">
                 <div class="phone-mockup" id="phoneMockup">
                     <div class="phone-screen">
-                        <img src="assets/s4.jpeg" alt="Streaker App Dashboard" class="screen-img">
+                        <img src="assets/s4.jpeg" alt="Streaker App Dashboard" class="screen-img" loading="lazy" width="300" height="600">
                         <div class="screen-overlay"></div>
                     </div>
                     <div class="phone-notch"></div>
@@ -376,7 +381,7 @@
                 <div class="carousel-container">
                     <div class="screenshot-item active">
                         <div class="phone-frame">
-                            <img src="assets/s1.jpeg" alt="App Onboarding" class="screenshot-img">
+                            <img src="assets/s1.jpeg" alt="App Onboarding" class="screenshot-img" loading="lazy" width="250" height="500">
                         </div>
                         <h4>Get Started Easily</h4>
                         <p>Track Progress, Smart Nutrition & Build Streaks</p>
@@ -384,7 +389,7 @@
 
                     <div class="screenshot-item">
                         <div class="phone-frame">
-                            <img src="assets/s2.jpeg" alt="AI Coach" class="screenshot-img">
+                            <img src="assets/s2.jpeg" alt="AI Coach" class="screenshot-img" loading="lazy" width="250" height="500">
                         </div>
                         <h4>AI-Powered Coach</h4>
                         <p>Generate personalized workouts instantly</p>
@@ -392,7 +397,7 @@
 
                     <div class="screenshot-item">
                         <div class="phone-frame">
-                            <img src="assets/s3.jpeg" alt="Weight Tracking" class="screenshot-img">
+                            <img src="assets/s3.jpeg" alt="Weight Tracking" class="screenshot-img" loading="lazy" width="250" height="500">
                         </div>
                         <h4>Weight Progress</h4>
                         <p>Beautiful charts to track your journey</p>
@@ -400,7 +405,7 @@
 
                     <div class="screenshot-item">
                         <div class="phone-frame">
-                            <img src="assets/s4.jpeg" alt="Home Dashboard" class="screenshot-img">
+                            <img src="assets/s4.jpeg" alt="Home Dashboard" class="screenshot-img" loading="lazy" width="250" height="500">
                         </div>
                         <h4>Smart Dashboard</h4>
                         <p>Track calories, macros & maintain streaks</p>
@@ -639,10 +644,8 @@
                 <div class="footer-social">
                     <h4>Connect</h4>
                     <div class="social-links">
-                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <!-- Social media links will be added when accounts are live -->
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.875rem; margin: 0;">Follow us on social media - coming soon!</p>
                     </div>
                 </div>
             </div>

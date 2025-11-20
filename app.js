@@ -20,12 +20,28 @@ document.addEventListener('DOMContentLoaded', function() {
 // Loader
 function initLoader() {
     const loader = document.getElementById('loader');
+    const skipButton = document.getElementById('skipLoader');
 
-    // Hide loader after page loads
+    // Function to hide loader
+    function hideLoader() {
+        loader.classList.add('hidden');
+    }
+
+    // Hide loader after page loads (auto)
     window.addEventListener('load', function() {
-        setTimeout(() => {
-            loader.classList.add('hidden');
-        }, 1500);
+        setTimeout(hideLoader, 1500);
+    });
+
+    // User Control & Freedom: Allow users to skip loading screen
+    if (skipButton) {
+        skipButton.addEventListener('click', hideLoader);
+    }
+
+    // Also allow clicking anywhere on loader to skip
+    loader.addEventListener('click', function(e) {
+        if (e.target === loader) {
+            hideLoader();
+        }
     });
 }
 
