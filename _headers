@@ -1,4 +1,4 @@
-# Security Headers for Netlify
+# Security Headers for Cloudflare Pages
 /*
   # Security Headers
   X-Frame-Options: DENY
