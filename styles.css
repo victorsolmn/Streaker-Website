@@ -144,9 +144,24 @@ body {
 }
 
 .brand-logo {
-    height: 50px;
+    height: 36px;
     width: auto;
     object-fit: contain;
+    transition: height 0.3s ease;
+}
+
+/* Tablet: Slightly larger logo */
+@media (min-width: 768px) {
+    .brand-logo {
+        height: 40px;
+    }
+}
+
+/* Desktop: Full-size prominent logo */
+@media (min-width: 1024px) {
+    .brand-logo {
+        height: 48px;
+    }
 }
 
 .nav-menu {
