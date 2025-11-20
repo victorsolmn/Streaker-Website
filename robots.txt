@@ -1,0 +1,9 @@
+# Robots.txt for Streaker Website
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://streaker.app/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
